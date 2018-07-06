@@ -14,8 +14,6 @@ public class UnionTest {
 
         // 初始化一个学生集合
         List<Student> students = Arrays.asList(new Student(1,"james"),new Student(2,"love"));
-//        students.stream().filter()
-
 //        List<Student>  students = new ArrayList<>();
 //        students.add(new MySupplier<Student>(){
 //            @Override
@@ -25,9 +23,26 @@ public class UnionTest {
 //        }.get());
 
         // 调用方法
-        List<String> stuIn = filterMap(students, Student -> Student.getId().equals(1),
-                student -> "学生学号："+student.getId()+",学生姓名:"+student.getName(),
-                student -> System.out.println("原来学生的信息："+student.toString()));
+//        List<String> stuIn = filterMap(students, Student -> Student.getId().equals(1),
+//                student -> "学生学号："+student.getId()+",学生姓名:"+student.getName(),
+//                student -> System.out.println("原来学生的信息："+student.toString()));
+
+        List<String> stuIn = filterMap(students, new MyPredicate<Student>() {
+            @Override
+            public boolean test(Student student) {
+                return student.getId().equals(1);
+            }
+        }, new MyFunction<Student, String>() {
+            @Override
+            public String apply(Student student) {
+                return student.getId()+student.getName();
+            }
+        }, new MyConsumer<Student>() {
+            @Override
+            public void accept(Student student) {
+                System.out.println(student);
+            }
+        });
 
 
         //打印
