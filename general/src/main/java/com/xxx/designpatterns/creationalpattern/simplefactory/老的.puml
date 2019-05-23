@@ -1,0 +1,21 @@
+@startuml
+
+interface Car {
+   void run();
+}
+
+class Ferrari implements Car {
+   void run();
+}
+
+class Tesla implements Car{
+   void run();
+}
+
+class Old
+
+Car <|-- Old
+Ferrari <|-- Old
+Tesla <|-- Old
+
+@enduml

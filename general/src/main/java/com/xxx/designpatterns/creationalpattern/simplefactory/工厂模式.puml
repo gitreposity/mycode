@@ -1,0 +1,27 @@
+@startuml
+
+interface Car {
+   void run();
+}
+
+class Ferrari implements Car {
+   void run();
+}
+
+class Tesla implements Car{
+   void run();
+}
+
+class client
+
+class CarFactory{
+public static Car createCar(String carName);
+}
+
+Car <|-- CarFactory
+Ferrari <|-- CarFactory
+Tesla <|-- CarFactory
+
+Car <|-- client
+CarFactory <|-- client
+@enduml

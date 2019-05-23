@@ -3,7 +3,8 @@ package com.xxx.designpatterns.creationalpattern.singleton;
 public class EnumNotLazySingleton {
 
     public enum EnumSingleton{
-        Instance(1,"好");
+        Instance(1,"好"),
+        Instance2(1,"好");
 
         EnumSingleton(Integer code, String name) {
             this.code = code;
@@ -34,8 +35,7 @@ public class EnumNotLazySingleton {
 
     public static void main(String[] args) {
         System.out.println(EnumSingleton.Instance);
-        System.out.println(EnumSingleton.Instance);
-        System.out.println(EnumSingleton.Instance);
+        System.out.println(EnumSingleton.Instance2);
         System.out.println(EnumSingleton.Instance);
     }
 }

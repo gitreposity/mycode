@@ -3,6 +3,7 @@ package com.xxx.stream.api;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -93,6 +94,7 @@ public class StreamMethodTest {
 
     @Data
     @NoArgsConstructor
+    @AllArgsConstructor
     private static class Student{
         private Integer id;
 
@@ -105,6 +107,8 @@ public class StreamMethodTest {
             this.id = id;
             this.name = name;
         }
+
+
     }
 
 
@@ -122,5 +126,16 @@ public class StreamMethodTest {
             this.name = name;
             this.game = game;
         }
+    }
+
+
+    static class Temp{
+
+        public static void main(String[] args) {
+            List<Student> stus = Lists.newArrayList(new Student(1,"jack",Arrays.asList("dddd","ttt")),
+                    new Student(2,"tom",Collections.singletonList(null)));
+            stus.stream().flatMap(t -> t.getGames().stream().map(u -> new TempStu(t.getId(),t.getName(),u))).forEach(System.out::println);
+        }
+
     }
 }
